@@ -64,20 +64,20 @@
 ### 7to Paso
 #### Etiquetar las imágenes con tu nombre de usuario de Docker Hub, antes de poder subir tus imágenes a Docker Hub.
 ```sh
-  docker tag mi-backend:test miusuario/mi-backend:test
-  docker tag mi-backend:latest miusuario/mi-backend:latest
+  docker tag mi-backend:test byotony/mi-backend:test
+  docker tag mi-backend:latest byotony/mi-backend:latest
 ```
 #### Subir las imágenes a Docker Hub
 ```sh
-  docker push miusuario/mi-backend:test
-  docker push miusuario/mi-backend:latest
+  docker push byotony/mi-backend:test
+  docker push byotony/mi-backend:latest
 ```
 ![Alt text](images/8.png)
 
 ### 8vo Paso
 #### Por ultimo hacemos el Docker Publico
 ```sh
-  docker push krixsjdk/mi-backend
+  docker push byotony/mi-backend
 ```
 ![Alt text](images/13.png)
 
