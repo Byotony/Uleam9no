@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: nestjs-container
-        image: gusrsl/kuber-az:latest
+        image: byotony/kuber-back:latest
         imagePullPolicy: Always  # Always obtener la Ãºltima imagen
         ports:
         - containerPort: 3000
