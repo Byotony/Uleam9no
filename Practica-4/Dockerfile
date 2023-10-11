@@ -1,22 +1,23 @@
-# Etapa 1: Compilar la aplicación Angular
-FROM node:18 as build
-
-# Establece el directorio de trabajo en la imagen
+# Etapa: BASE
+FROM node AS base
 WORKDIR /app
-
-# Copia los archivos de configuración y el código fuente
 COPY package*.json ./
-COPY angular.json ./
-COPY tsconfig.json ./
-COPY src ./src
-
-# Instala las dependencias
 RUN npm install
-COPY . /app
 
-# Construye la aplicación Angular
-RUN npm run build --prod
+# Copiar los archivos fuente
+COPY . .
 
-FROM nginx
+# Etapa: TEST
+FROM base AS test
+# Aquí podrías ejecutar pruebas o cualquier otro comando relacionado con testing. 
+# Como ejemplo, ejecuto las pruebas de Jest.
+RUN npm run test
 
-COPY --from=build /app/dist/gym-front usr/share/nginx/html
+# Etapa: PRODUCTION
+FROM base AS production
+# Compilar el proyecto
+RUN npm run build
+# Exponer el puerto en el que corre tu aplicación
+EXPOSE 3000
+# Comando para correr tu aplicación
+CMD ["npm", "start"]
